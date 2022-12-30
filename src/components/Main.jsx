@@ -68,7 +68,7 @@ function Main() {
 
   return (
     <div
-      className="bg-darkPrimary text-white h-screen overflow-scroll relative"
+      className="bg-darkPrimary text-white h-screen overflow-scroll relative lg:overflow-hidden"
       onClick={() => setClickCount(clickCount + 1)}
     >
       {/* {console.log(clickCount)} */}
@@ -84,10 +84,30 @@ function Main() {
             icon={<AiOutlinePlus size={25} />}
           />
         </div>
-        
+
       </div>
       <div className=" lg:grid lg:grid-cols-12 lg:gap-2">
-      <div className=" absolute top-[10%] lg:pt-16 lg:col-span-3  whitespace-nowrap overflow-auto scrollbar-hide lg:relative lg:h-full w-full overflow-scroll sm:flex sm:flex-row sm:flex-wrap sm:items-center  lg:block lg:w-full   lg:p-4 lg:h-[95vh] lg:bg-white/[0.07] lg:top-[5%] md:gap-x-2 md:flex-wrap ">
+        <div className="  lg:pt-16 lg:col-span-3  whitespace-nowrap overflow-auto scrollbar-hide lg:relative lg:h-full w-full overflow-scroll sm:flex sm:flex-row sm:flex-wrap sm:items-center  lg:block lg:w-full   lg:p-4 lg:h-[95vh] lg:bg-white/[0.07] lg:top-[5%] md:gap-x-2 md:flex-wrap ">
+          <div className="hidden lg:block w-full sticky top-[2%] z-10 w-full bg-darkPrimary ">
+            d
+          </div>
+          {/* <div className="hidden lg:block w-full sticky top-0 z-10 ">
+            <button
+              onClick={() => {
+                setShowNote(true);
+                setEditNoteData([{ title: "", note: "" }]);
+                setIsDesktop(true)
+              }}
+              className="hidden lg:block lg:w-full text-dark px-4 py-2 shadow-md bg-white rounded-md flex items-center space-x-2 active:bg-cyan-200 hover:bg-cyan-100 lg:text-sm"
+            >
+              <div className="lg:pl-[40%] lg:flex lg:items-center lg:space-x-2 ">
+
+                <AiOutlinePlus size={15} />
+                <p>Add Note</p>
+              </div>
+            </button>
+
+          </div> */}
           {noteData
             ?.sort((a, b) => {
               return b.timeStamp - a.timeStamp;
@@ -105,14 +125,14 @@ function Main() {
               </div>
             ))}
         </div>
-        {showNote &&
-        <div className="lg:col-span-9">
 
-        <NewNote setShowNote={setShowNote} editNoteData={editNoteData} isDesktop={isDesktop} />
-        </div>
+        {showNote &&
+          <div className="lg:col-span-9">
+            <NewNote setShowNote={setShowNote} editNoteData={editNoteData} isDesktop={isDesktop} setEditNoteData={setEditNoteData} />
+          </div>
         }
 
-     
+
       </div>
     </div>
   );

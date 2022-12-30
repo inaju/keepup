@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ButtonComponent from './ButtonComponent'
 import { AiOutlineDelete } from 'react-icons/ai'
 import { BiSave } from 'react-icons/bi'
@@ -7,13 +7,20 @@ import EditorToolbar, { } from "./EditorToolbar";
 import "react-quill/dist/quill.snow.css";
 import './textEditor.css'
 
-function MobileNoteContent({ handleInput, setShowNote, handleSave, noteData, noteDataTitle }) {
-    const [state, setState] = React.useState({ value: `<h1>just say it bro</h1><p>this is just</p><p> i know you want it this way <b>ok<b></p>` });
+function MobileNoteContent({ handleInput, editNoteData,setNoteDataTitle,setNoteData,setShowNote, handleSave, noteData, noteDataTitle }) {
+    const [state, setState] = React.useState({ value: noteData });
     const handleChange = value => {
         setState({ value });
         console.log(value)
+        setNoteData(value);
+
     };
 
+    useEffect(()=>{
+        setState({noteData})
+    },[])
+
+console.log(noteData,'noteData')
     const modules = {
         toolbar: [
             [{ header: '1' }, { header: '2' }, { font: [] }],
@@ -43,13 +50,13 @@ function MobileNoteContent({ handleInput, setShowNote, handleSave, noteData, not
                 />
                 {/* <textarea
         onChange={(e) => handleInput(e)}
-        name="note"
         placeholder="Note"
         value={noteData}
-      /> */}
-                <ReactQuill
+    /> */}
+                <ReactQuill  name="note"
                     theme="snow"
-                    value={state.value}
+                    value={noteData}
+                    // value={state.value}
                     onChange={handleChange}
                     placeholder={"Write something awesome..."}
                     modules={modules}
@@ -79,36 +86,3 @@ function MobileNoteContent({ handleInput, setShowNote, handleSave, noteData, not
 
 export default MobileNoteContent
 
-
-const EditorModules = {
-    toolbar: [
-        [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
-        [{ size: [] }],
-        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-        [{ 'list': 'ordered' }, { 'list': 'bullet' },
-        { 'indent': '-1' }, { 'indent': '+1' }],
-        ['link', 'image', 'video'],
-        ['clean']
-    ],
-    clipboard: {
-        // toggle to add extra line breaks when pasting HTML:
-        matchVisual: false,
-    }
-}
-/* 
- * Quill editor formats
- * See https://quilljs.com/docs/formats/
- */
-const EditorFormats = [
-    'header', 'font', 'size',
-    'bold', 'italic', 'underline', 'strike', 'blockquote',
-    'list', 'bullet', 'indent',
-    'link', 'image', 'video'
-]
-
-/*
- * PropType validation
- */
-//  const EditorPropTypes = {
-//     placeholder: PropTypes.string,
-//   }

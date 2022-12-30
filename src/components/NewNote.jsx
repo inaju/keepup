@@ -16,11 +16,11 @@ import { v4 as uuidv4 } from "uuid";
 import { useUserAuth } from "../auth/UserAuthContext";
 import MobileNoteContent from "./MobileNoteContent";
 import DesktopNoteContent from "./DesktopNoteComponent";
-function NewNote({ setShowNote, editNoteData, isDesktop }) {
+function NewNote({ setShowNote, editNoteData, isDesktop,setEditNoteData }) {
   const { user } = useUserAuth()
   const [userValue, setUserValue] = useState();
   const [noteDataTitle, setNoteDataTitle] = useState("");
-  const [noteData, setNoteData] = useState("");
+  const [noteData, setNoteData] = useState("  ");
   const [note, setNote] = useState();
   const [noteLength, setNoteLength] = useState();
   const handleInput = (e) => {
@@ -37,13 +37,13 @@ function NewNote({ setShowNote, editNoteData, isDesktop }) {
   };
   const handleSave = () => {
     setShowNote(false);
-    // console.log(editNoteData, editNoteData[0]?.note?.length);
+    console.log(noteDataTitle, noteData);
     if (
       noteDataTitle?.length > 0 &&
       noteData?.length > 0 &&
       editNoteData[0]?.note?.length === 0
     ) {
-      // console.log("1");
+      console.log("1");
       setDocFunc(noteDataTitle, noteData);
     } else if (editNoteData && editNoteData[0]?.note?.length > 0) {
       // console.log("2");
@@ -85,7 +85,7 @@ function NewNote({ setShowNote, editNoteData, isDesktop }) {
 
   const setDocFunc = async (title, note) => {
     try {
-
+console.log('setting doc')
       const uniqueId = uuidv4();
       const docRef = await setDoc(
         doc(db, "note", uniqueId),
@@ -99,12 +99,13 @@ function NewNote({ setShowNote, editNoteData, isDesktop }) {
         },
         { merge: true }
       );
-      // console.log(uniqueId, collection.id);
+      console.log(uniqueId, collection.id);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
 
   };
+
   async function getNotes(db) {
     const noteCol = collection(db, "note");
     const noteSnapShot = await getDocs(noteCol);
@@ -120,7 +121,7 @@ function NewNote({ setShowNote, editNoteData, isDesktop }) {
  
   return (
     <>
-      {isDesktop ?<DesktopNoteContent  handleInput={handleInput} setShowNote={setShowNote} handleSave={handleSave} noteData={noteData} noteDataTitle={noteDataTitle} /> : <MobileNoteContent handleInput={handleInput} setShowNote={setShowNote} handleSave={handleSave} noteData={noteData} noteDataTitle={noteDataTitle} />}</>
+      {isDesktop ?<DesktopNoteContent setEditNoteData={setEditNoteData} setNoteDataTitle={setNoteDataTitle} setNoteData={setNoteData}  handleInput={handleInput} setShowNote={setShowNote} handleSave={handleSave} noteData={noteData} noteDataTitle={noteDataTitle} /> : <MobileNoteContent handleInput={handleInput} setShowNote={setShowNote} handleSave={handleSave} noteData={noteData} noteDataTitle={noteDataTitle} />}</>
   );
 }
 

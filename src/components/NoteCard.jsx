@@ -17,7 +17,17 @@ function NoteCard({
   noteData,
 }) {
   const navigate = useNavigate();
-
+  function removeTags(str) {
+    if ((str===null) || (str===''))
+        return false;
+    else
+        str = str.toString();
+          
+    // Regular expression to identify HTML tags in 
+    // the input string. Replacing the identified 
+    // HTML tag with a null string.
+    return str.replace( /(<([^>]+)>)/ig, '');
+  }
   const handleShare = async (e, id) => {
     e.stopPropagation();
     console.log(id);
@@ -42,6 +52,7 @@ function NoteCard({
       return note;
     }
   };
+
   const handleEdit = () => {
     setEditNoteData([{ title: noteData?.title, note: noteData?.note }]);
     setShowNote(true);
@@ -64,7 +75,7 @@ function NoteCard({
       <p className="flex items-center mt-1 md:text-sm">
         <p className="text-md text-white/[0.5] mr-4">{getDateFormat()}</p>
         <p className=" text-md  text-white/[0.8]">
-          {shortenNote(noteData?.note,22)}
+        {removeTags(shortenNote(noteData?.note,22))}
         </p>
       </p>
 
