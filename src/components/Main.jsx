@@ -88,10 +88,8 @@ function Main() {
       </div>
       <div className=" lg:grid lg:grid-cols-12 lg:gap-2">
         <div className="  lg:pt-16 lg:col-span-3  whitespace-nowrap overflow-auto scrollbar-hide lg:relative lg:h-full w-full overflow-scroll sm:flex sm:flex-row sm:flex-wrap sm:items-center  lg:block lg:w-full   lg:p-4 lg:h-[95vh] lg:bg-white/[0.07] lg:top-[5%] md:gap-x-2 md:flex-wrap ">
-          <div className="hidden lg:block w-full sticky top-[2%] z-10 w-full bg-darkPrimary ">
-            d
-          </div>
-          {/* <div className="hidden lg:block w-full sticky top-0 z-10 ">
+         
+          <div className="hidden lg:block w-full sticky top-0 z-10 ">
             <button
               onClick={() => {
                 setShowNote(true);
@@ -107,7 +105,7 @@ function Main() {
               </div>
             </button>
 
-          </div> */}
+          </div>
           {noteData
             ?.sort((a, b) => {
               return b.timeStamp - a.timeStamp;
