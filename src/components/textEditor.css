@@ -1,0 +1,31 @@
+.quill.ql-error .ql-toolbar {
+
+    border-bottom: 1px solid red;
+}
+
+.ql-container.ql-snow {
+    font-family: "Source Sans Pro", sans-serif;
+    border: none;
+}
+
+.ql-toolbar.ql-snow {
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+span.ql-picker-label::before {
+    font-family: "Source Sans Pro", sans-serif;
+}
+span.ql-picker-label:hover {
+    font-family: "Source Sans Pro", sans-serif;
+    color:'red'
+}
+
+
+
+.ql-editor.ql-blank::before {
+    color: rgba(255, 255, 255, 0.2)
+}
