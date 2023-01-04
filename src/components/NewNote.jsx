@@ -37,7 +37,7 @@ function NewNote({ setShowNote, editNoteData, isDesktop,setEditNoteData }) {
   };
   const handleSave = () => {
     setShowNote(false);
-    console.log(noteDataTitle, noteData);
+    // console.log(noteDataTitle, noteData);
     if (
       noteDataTitle?.length > 0 &&
       noteData?.length > 0 &&
@@ -47,6 +47,7 @@ function NewNote({ setShowNote, editNoteData, isDesktop,setEditNoteData }) {
       setDocFunc(noteDataTitle, noteData);
     } else if (editNoteData && editNoteData[0]?.note?.length > 0) {
       // console.log("2");
+      console.log(editNoteData,'editNoteData[0]?.title')
       updateDocFunc(editNoteData[0]?.title, noteDataTitle, noteData);
     }
   };
@@ -61,7 +62,7 @@ function NewNote({ setShowNote, editNoteData, isDesktop,setEditNoteData }) {
 
   const updateDocFunc = async (id, title, note) => {
     try {
-      // console.log("updating", title, note);
+      console.log("updating", title,id);
       const updateDocRef = await updateDoc(
         doc(db, "note", id),
         {

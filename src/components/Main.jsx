@@ -43,7 +43,7 @@ function Main() {
     onSnapshot(noteCol, (docsSnap) => {
       docsSnap.forEach((doc) => {
         if (doc.data().user == user?.uid) {
-          console.log(doc.data());
+          // console.log(doc.data());
           tempList.push(doc.data().user == user?.uid && doc.data());
         }
         setNoteData(tempList);
@@ -57,7 +57,7 @@ function Main() {
   useEffect(() => {
     getNotes(db);
     console.count();
-    console.log('window', window.screen.availWidth)
+    // console.log('window', window.screen.availWidth)
     if (window.screen.availWidth >= 1024) {
       setIsDesktop(true)
     } else {
