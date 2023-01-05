@@ -27,13 +27,13 @@ function MobileNoteContent({handleInput,setShowNote,handleSave,noteData,noteData
         <ButtonComponent
           onClick={handleSave}
           text="Save Note"
-          icon={<BiSave size={25} />}
+          icon={<BiSave size={20} />}
         />
       </div>
       <div onClick={() => setShowNote(false)}>
         <ButtonComponent
           text="Discard"
-          icon={<AiOutlineDelete size={25} />}
+          icon={<AiOutlineDelete size={20} />}
         />
       </div>
     </div>

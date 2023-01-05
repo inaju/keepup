@@ -9,15 +9,14 @@ import {
   setDoc,
   addDoc,
   updateDoc,
-
 } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { v4 as uuidv4 } from "uuid";
 import { useUserAuth } from "../auth/UserAuthContext";
 import MobileNoteContent from "./MobileNoteContent";
 import DesktopNoteContent from "./DesktopNoteComponent";
-function NewNote({ setShowNote, editNoteData, isDesktop,setEditNoteData }) {
-  const { user } = useUserAuth()
+function NewNote({ setShowNote, editNoteData, isDesktop, setEditNoteData }) {
+  const { user } = useUserAuth();
   const [userValue, setUserValue] = useState();
   const [noteDataTitle, setNoteDataTitle] = useState("");
   const [noteData, setNoteData] = useState("  ");
@@ -37,7 +36,7 @@ function NewNote({ setShowNote, editNoteData, isDesktop,setEditNoteData }) {
   };
   const handleSave = () => {
     setShowNote(false);
-    // console.log(noteDataTitle, noteData);
+    console.log(editNoteData[0], "editNoteData");
     if (
       noteDataTitle?.length > 0 &&
       noteData?.length > 0 &&
@@ -46,9 +45,13 @@ function NewNote({ setShowNote, editNoteData, isDesktop,setEditNoteData }) {
       console.log("1");
       setDocFunc(noteDataTitle, noteData);
     } else if (editNoteData && editNoteData[0]?.note?.length > 0) {
-      // console.log("2");
-      console.log(editNoteData,'editNoteData[0]?.title')
-      updateDocFunc(editNoteData[0]?.title, noteDataTitle, noteData);
+      console.log(
+        editNoteData[0]?.id,
+        noteData,
+        editNoteData[0],
+        "editNoteData"
+      );
+      updateDocFunc(editNoteData[0]?.id, noteDataTitle, noteData);
     }
   };
   useEffect(() => {
@@ -62,21 +65,15 @@ function NewNote({ setShowNote, editNoteData, isDesktop,setEditNoteData }) {
 
   const updateDocFunc = async (id, title, note) => {
     try {
-      console.log("updating", title,id);
+      console.log("updating", title, note, id);
       const updateDocRef = await updateDoc(
         doc(db, "note", id),
         {
           title: title,
           note: note,
-          country: "NG",
-          id:
-            noteLength?.length !== NaN || undefined
-              ? noteLength?.length + 1
-              : 0,
-          // user: "",
           timeStamp: Date.now(),
-        },
-        { merge: true }
+        }
+        // { merge: true }
       );
       console.log("for updating", updateDocRef);
     } catch (e) {
@@ -86,25 +83,24 @@ function NewNote({ setShowNote, editNoteData, isDesktop,setEditNoteData }) {
 
   const setDocFunc = async (title, note) => {
     try {
-console.log('setting doc')
+      console.log("setting doc");
       const uniqueId = uuidv4();
       const docRef = await setDoc(
         doc(db, "note", uniqueId),
         {
           title: title,
-          note: note,
+          note: note + " ",
 
           id: uniqueId,
           user: user.uid,
           timeStamp: Date.now(),
-        },
-        { merge: true }
+        }
+        // { merge: true }
       );
-      console.log(uniqueId, collection.id);
+      console.log(uniqueId, "uniqueId", collection.id);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
-
   };
 
   async function getNotes(db) {
@@ -117,15 +113,30 @@ console.log('setting doc')
     getNotes(db);
   }, []);
 
-
-
- 
   return (
     <>
-      {isDesktop ?<DesktopNoteContent setEditNoteData={setEditNoteData} setNoteDataTitle={setNoteDataTitle} setNoteData={setNoteData}  handleInput={handleInput} setShowNote={setShowNote} handleSave={handleSave} noteData={noteData} noteDataTitle={noteDataTitle} /> : <MobileNoteContent handleInput={handleInput} setShowNote={setShowNote} handleSave={handleSave} noteData={noteData} noteDataTitle={noteDataTitle} />}</>
+      {isDesktop ? (
+        <DesktopNoteContent
+          setEditNoteData={setEditNoteData}
+          setNoteDataTitle={setNoteDataTitle}
+          setNoteData={setNoteData}
+          handleInput={handleInput}
+          setShowNote={setShowNote}
+          handleSave={handleSave}
+          noteData={noteData}
+          noteDataTitle={noteDataTitle}
+        />
+      ) : (
+        <MobileNoteContent
+          handleInput={handleInput}
+          setShowNote={setShowNote}
+          handleSave={handleSave}
+          noteData={noteData}
+          noteDataTitle={noteDataTitle}
+        />
+      )}
+    </>
   );
 }
 
 export default NewNote;
-
-
