@@ -9,12 +9,15 @@ import {
   setDoc,
   addDoc,
   updateDoc,
+  query,
+  where,
 } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { v4 as uuidv4 } from "uuid";
 import { useUserAuth } from "../auth/UserAuthContext";
 import MobileNoteContent from "./MobileNoteContent";
 import DesktopNoteContent from "./DesktopNoteComponent";
+import { getData } from "../utils/getData";
 function NewNote({ setShowNote, editNoteData, isDesktop, setEditNoteData }) {
   const { user } = useUserAuth();
   const [userValue, setUserValue] = useState();
@@ -104,10 +107,8 @@ function NewNote({ setShowNote, editNoteData, isDesktop, setEditNoteData }) {
   };
 
   async function getNotes(db) {
-    const noteCol = collection(db, "note");
-    const noteSnapShot = await getDocs(noteCol);
-    const noteList = noteSnapShot.docs.map((doc) => doc.data());
-    setNoteLength(noteList);
+    const noteList=await getData(user,"note")
+       setNoteLength(noteList);
   }
   useEffect(() => {
     getNotes(db);

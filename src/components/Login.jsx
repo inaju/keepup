@@ -7,23 +7,31 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 function Login() {
   const { signInWithGoogle, user } = useUserAuth();
   const [show, setShow] = useState(false);
+  const [showProceed, setShowProceed] = useState(false);
   useEffect(() => {
-    setTimeout(() => setShow(true), 3000);
+    setTimeout(() => setShow(true), 5000);
   }, []);
+  useEffect(() => {
+    setTimeout(() => setShowProceed(true), 5000);
+  }, [user]);
   return (
-    <div className="relative w-full h-screen border border-red-400 bg-darkSecondary">
-      <div className=" absolute top-[50%] left-[30%] text-white">
+    <div className="relative w-full h-screen  bg-darkSecondary">
+      <div className=" absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-white">
         {show ? (
           <>
             {!user ? (
               <GoogleButton onClick={signInWithGoogle} />
             ) : (
-              <div className="flex items-center flex-col gap-4">
+              <>
+              {showProceed &&
+                <div className="flex items-center flex-col gap-4">
                 <a href="/">Login succesful</a>
                 <a href="/">
-                  <ButtonComponent text="Proceed" />
+                <ButtonComponent text="Proceed" />
                 </a>
-              </div>
+                </div>
+              }
+              </>
             )}
           </>
         ) : (
