@@ -5,6 +5,7 @@ import { db } from "../firebase-config";
 import ButtonComponent from "./ButtonComponent";
 import { getDateFormat } from "../utils/getDateFormat";
 import { getUser } from "../utils/getUser";
+import { removeTags } from "../utils/removeTags";
 
 function SharedNote() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -17,6 +18,7 @@ function SharedNote() {
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         // console.log(docSnap.data());
+        removeTags(docSnap.data())
         setSpecificNoteDate(docSnap.data());
          const ownerData=await getUser(docSnap.data().user)
          setNoteOwner(ownerData[0]?.name)
