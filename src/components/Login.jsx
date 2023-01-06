@@ -25,8 +25,8 @@ function Login() {
               <>
               {showProceed &&
                 <div className="flex items-center flex-col gap-4">
-                <a href="/">Login succesful</a>
-                <a href="/">
+                <a href="/app">Login succesful</a>
+                <a href="/app">
                 <ButtonComponent text="Proceed" />
                 </a>
                 </div>

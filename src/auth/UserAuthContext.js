@@ -35,7 +35,7 @@ export function UserAuthContextProvider({ children }) {
     return createUserWithEmailAndPassword(auth, email, password);
   }
   const logOut = async () => {
-    window.location = "/login";
+    window.location = "/";
     console.log("signing out");
     return await signOut(auth);
   };

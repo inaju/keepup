@@ -1,9 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 /* @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap'); */
 @import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap");
+
 html {
   font-family: "Source Sans Pro", sans-serif;
   /* font-family: "Roboto Slab", serif; */
@@ -11,6 +12,9 @@ html {
 
 h1.logo {
   font-family: "Kaushan Script", cursive;
+}
+.Poppins {
+  font-family: "Poppins", cursive;
 }
 
 /* For Webkit-based browsers (Chrome, Safari and Opera) */
@@ -20,6 +24,15 @@ h1.logo {
 
 /* For IE, Edge and Firefox */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.radial-bg {
+  background: #3A3AF4;
+  /* background-color: radial-gradient(50% 50% at 50% 50%, #3A3AF4 0%, rgba(58, 58, 244, 0) 100%); */
+  opacity: 0.5;
+  filter: blur(150px);
 }

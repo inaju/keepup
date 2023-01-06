@@ -38,7 +38,13 @@ function NoteCard({
   const handleShare = async (e, id) => {
     e.stopPropagation();
     console.log(id);
-    copyContent(window.location.hostname+":3000"+`/sharedNote?noteId=${id}`);
+    if(window.location.hostname==='localhost'){
+
+      copyContent(window.lockwation.hostname+":3000"+`/sharedNote?noteId=${id}`);
+    }else{
+      copyContent(window.location.hostname+ `/sharedNote?noteId=${id}`);
+
+    }
     toast.info('link copied to clipboard', {
       position: "top-right",
       autoClose: 5000,
