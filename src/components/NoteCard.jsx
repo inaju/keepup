@@ -9,6 +9,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getDateFormat } from "../utils/getDateFormat";
+import { removeTags } from "../utils/removeTags";
 
 function NoteCard({
   title,
@@ -20,15 +21,7 @@ function NoteCard({
   clickCount,
   noteData,
 }) {
-  const navigate = useNavigate();
-  function removeTags(str) {
-    if (str === null || str === "") return false;
-    else str = str.toString();
-    const hasclosingTag = str.replace(/(<([^>]+)>)/gi, "").includes("</");
-    if (hasclosingTag) {
-      return str.replace(/(<([^>]+)>)/gi, "").slice(0, -7);
-    } else return str.replace(/(<([^>]+)>)/gi, "");
-  }
+
 
   async function copyContent(link) {
     try {
@@ -95,13 +88,7 @@ function NoteCard({
     setShowNote(true);
   };
 
-  // const getDateFormat = () => {
-  //   const date = new Date(noteData?.timeStamp);
-  //   const day = date.getDate();
-  //   const month = date.getMonth() + 1;
-  //   const year = date.getFullYear();
-  //   return String(day + "/" + month + "/" + year);
-  // };
+  
   return (
     <div
       className="  m-2 mx-4 p-4 pb-12 rounded-md relative  bg-white/[0.03] md:w-full md:m-0 md:hover:cursor-pointer md:hover:bg-white/[0.05] md:active:bg-white/[0.05] md:pb-10"

@@ -138,7 +138,7 @@ function Main() {
         </>
         {/* )} */}
         {console.log(editNoteData, "editNoteData")}
-        {noteData.length == 0 && !showNote && !isDesktop &&loading&& (
+        {noteData.length == 0 && !showNote && !isDesktop && (
           <div className="absolute top-[40%] left-[50%] lg:left-[46%] translate-x-[-50%] flex flex-col items-center max-w-md">
             <SelectNote />
             <p className="text-xl lg:text-2xl">Please Create a Note</p>
