@@ -1,0 +1,53 @@
+[debug] [2023-01-07T17:40:34.658Z] ----------------------------------------------------------------------
+[debug] [2023-01-07T17:40:34.660Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\work\Documents\code\keepup\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-01-07T17:40:34.660Z] CLI Version:   11.19.0
+[debug] [2023-01-07T17:40:34.661Z] Platform:      win32
+[debug] [2023-01-07T17:40:34.661Z] Node Version:  v16.14.0
+[debug] [2023-01-07T17:40:34.726Z] Time:          Sat Jan 07 2023 18:40:34 GMT+0100 (West Africa Standard Time)
+[debug] [2023-01-07T17:40:34.727Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-01-07T17:40:34.732Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-01-07T17:40:34.878Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-01-07T17:40:34.878Z] > authorizing via signed-in user (mitchelinajuo@gmail.com)
+[debug] [2023-01-07T17:40:34.878Z] [iam] checking project keepup-63ced for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-01-07T17:40:34.880Z] > refreshing access token with scopes: []
+[debug] [2023-01-07T17:40:34.881Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-01-07T17:40:34.881Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-01-07T17:40:38.761Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-01-07T17:40:38.761Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-01-07T17:40:40.571Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-01-07T17:40:40.572Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-01-07T17:40:40.999Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/keepup-63ced:testIamPermissions [none]
+[debug] [2023-01-07T17:40:40.999Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/keepup-63ced:testIamPermissions x-goog-quota-user=projects/keepup-63ced
+[debug] [2023-01-07T17:40:40.999Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/keepup-63ced:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-01-07T17:40:44.231Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/keepup-63ced:testIamPermissions 200
+[debug] [2023-01-07T17:40:44.231Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/keepup-63ced:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-01-07T17:40:44.234Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/keepup-63ced [none]
+[debug] [2023-01-07T17:40:47.573Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/keepup-63ced 200
+[debug] [2023-01-07T17:40:47.573Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/keepup-63ced {"projectId":"keepup-63ced","projectNumber":"166161196597","displayName":"keepup","name":"projects/keepup-63ced","resources":{"hostingSite":"keepup-63ced","storageBucket":"keepup-63ced.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_47228517-260c-4ecd-b798-42aff552351d"}
+[info] 
+[info] === Deploying to 'keepup-63ced'...
+[info] 
+[info] i  deploying firestore, hosting 
+[info] i  firestore: reading indexes from firestore.indexes.json... 
+[info] i  cloud.firestore: checking firestore.rules for compilation errors... 
+[debug] [2023-01-07T17:40:47.583Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/keepup-63ced:test [none]
+[debug] [2023-01-07T17:40:47.583Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/keepup-63ced:test [omitted]
+[debug] [2023-01-07T17:40:50.990Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/keepup-63ced:test 200
+[debug] [2023-01-07T17:40:50.990Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/keepup-63ced:test {}
+[info] +  cloud.firestore: rules file firestore.rules compiled successfully 
+[debug] [2023-01-07T17:40:50.996Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/keepup-63ced/versions [none]
+[debug] [2023-01-07T17:40:50.996Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/keepup-63ced/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2023-01-07T17:40:58.084Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/keepup-63ced/versions 200
+[debug] [2023-01-07T17:40:58.085Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/keepup-63ced/versions {"name":"projects/166161196597/sites/keepup-63ced/versions/812aa436cba1ca7c","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2023-01-07T17:40:58.087Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/keepup-63ced/releases pageSize=10&pageToken=
+[debug] [2023-01-07T17:40:58.088Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/keepup-63ced/databases/(default)/collectionGroups/-/indexes [none]
+[debug] [2023-01-07T17:41:07.242Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/keepup-63ced/releases 200
+[debug] [2023-01-07T17:41:07.242Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/keepup-63ced/releases {"releases":[{"name":"projects/keepup-63ced/releases/cloud.firestore","rulesetName":"projects/keepup-63ced/rulesets/0a467475-3e09-4f19-8a81-8645a9b6ba40","createTime":"2022-12-24T18:07:20.113927Z","updateTime":"2023-01-06T07:22:15.431251Z"}]}
+[debug] [2023-01-07T17:41:07.243Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/keepup-63ced/rulesets/0a467475-3e09-4f19-8a81-8645a9b6ba40 [none]
+[debug] [2023-01-07T17:41:13.469Z] Error: Timed out.
+    at Timeout._onTimeout (C:\Users\work\Documents\code\keepup\node_modules\firebase-tools\lib\utils.js:253:49)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+[error] 
+[error] Error: An unexpected error has occurred.
